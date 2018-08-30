@@ -41,8 +41,6 @@ void KalmanFilter::update_(const VectorXd &y,
 	MatrixXd Si = S.inverse();
 	MatrixXd K = P_ * Ht * Si;      // Kalman Gain
 
-  cout << "Previous x_: " << x_ << '\n';
-  cout << "Previous P_: " << P_ << '\n';
 	//new estimate
 	x_ = x_ + (K * y);
 	P_ = (I - K * H) * P_;
