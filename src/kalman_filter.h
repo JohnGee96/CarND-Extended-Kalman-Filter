@@ -1,8 +1,18 @@
 #ifndef KALMAN_FILTER_H_
 #define KALMAN_FILTER_H_
 #include "Eigen/Dense"
+#include <iostream>
 
 class KalmanFilter {
+private:
+  /**
+   * Update the state with Kalman Filter equations (shared between EKF and vanilla KF)
+   * @param y The error vector
+   * @param H The matrix that projects state space into measurement space
+   * @param R The Measurement (noise) covariance matrix
+   */
+  inline void update_(const Eigen::VectorXd &y, 
+                      const Eigen::MatrixXd &H, const Eigen::MatrixXd &R);
 public:
 
   // state vector
